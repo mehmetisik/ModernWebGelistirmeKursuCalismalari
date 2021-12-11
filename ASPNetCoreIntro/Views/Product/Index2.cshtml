@@ -1,0 +1,28 @@
+﻿@model List<ASPNetCoreIntro.Entities.Customer>
+
+
+@{
+
+}
+
+<table border="1">
+    <thead>
+        <tr>
+            <td>isim</td>
+            <td>Soyisim</td>
+            <td>Şehir</td>
+
+        </tr>
+    </thead>
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.FirstName</td>
+            <td>@customer.LastName</td>
+            <td>@customer.City</td>
+
+        </tr>
+    }
+
+
+</table>
