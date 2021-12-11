@@ -1,0 +1,15 @@
+﻿@model SaveCustomerViewModel
+
+@{
+
+}
+
+
+<form asp-controller="Customer" asp-action="SaveCustomer" >
+   Id: <input asp-for="Customer.Id" />
+   İsim:  <input asp-for="Customer.FirstName" />
+   Soyisim: <input asp-for="Customer.LastName"  />
+   Şehir:  <select asp-for="Customer.City" asp-items= "Model.Cities"> </select>
+
+   <button type="submit">Kaydet</button>
+</form>

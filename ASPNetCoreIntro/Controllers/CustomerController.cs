@@ -1,5 +1,7 @@
 ﻿using ASPNetCoreIntro.Entities;
+using ASPNetCoreIntro.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Collections.Generic;
 
 namespace ASPNetCoreIntro.Controllers
@@ -11,9 +13,21 @@ namespace ASPNetCoreIntro.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult SaveCustomer()
         {
-            return View();
+            return View(new SaveCustomerViewModel
+            {
+                Cities = new List<SelectListItem>
+                {
+
+                    new SelectListItem{ Text = "Ankara",Value = "06"},
+                    new SelectListItem{ Text = "İzmir",Value = "35"},
+                    new SelectListItem{ Text = "Malatya",Value = "44"},
+                    new SelectListItem{ Text = "İstanbul",Value = "34"},
+
+                }
+            });
         }
 
         [HttpPost]
