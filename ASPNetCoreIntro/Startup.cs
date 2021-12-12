@@ -1,3 +1,4 @@
+using ASPNetCoreIntro.Services.Logging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -23,6 +24,8 @@ namespace ASPNetCoreIntro
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<ILogger,FileLogger>();
+
             services.AddControllersWithViews();
         }
 
@@ -46,11 +49,17 @@ namespace ASPNetCoreIntro
 
             app.UseAuthorization();
 
+            
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Product}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "admin",
+                    pattern: "admin/{controller=Product}/{action=Index}/{id?}");
             });
         }
     }
